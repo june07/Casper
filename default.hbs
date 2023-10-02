@@ -28,13 +28,6 @@
     <header id="gh-head" class="gh-head outer{{#match @custom.header_style "Hidden"}} is-header-hidden{{/match}}">
         <div class="gh-head-inner inner">
             <div class="gh-head-brand">
-                <a class="gh-head-logo{{#unless @site.logo}} no-image{{/unless}}" href="{{@site.url}}">
-                    {{#if @site.logo}}
-                        <img src="{{@site.logo}}" alt="{{@site.title}}">
-                    {{else}}
-                        {{@site.title}}
-                    {{/if}}
-                </a>
                 <button class="gh-search gh-icon-btn" aria-label="Search this site" data-ghost-search>{{> "icons/search"}}</button>
                 <button class="gh-burger"></button>
             </div>
@@ -73,6 +66,12 @@
     </header>
 
     <div class="site-content">
+        <header id="site-head">
+            {{#if @site.logo}}<a id="site-logo" href="{{@site.url}}"><div class="sitelogo" style="background: url({{@site.logo}})"></div></a>{{/if}}
+            <h1 class="site-title"><a href="{{@site.url}}">{{@site.title}}</a></h1>
+            <h2 class="site-description">{{@site.description}}</h2>
+            {{!> menu}}
+        </header>
         {{!-- All other templates get inserted here, index.hbs, post.hbs, etc --}}
         {{{body}}}
     </div>
